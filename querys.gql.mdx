@@ -1,0 +1,52 @@
+# Mutations
+
+``` graphql
+  mutation($productInput: CreateProductInput!) {
+    createProduct(productInput: $productInput ) {
+      id
+      name,
+      createdAt
+    }
+  }
+
+  mutation(
+    $updateProductId: ID!,
+    $updateProductProductInput2: UpdateProductInput!
+  ) {
+    updateProduct(
+      id: $updateProductId,
+      productInput: $updateProductProductInput2
+    ) {
+      id
+      name
+      image
+      createdAt
+    }
+  }
+
+  mutation(
+    $deleteProductId: ID!
+  ) {
+    deleteProduct(id: $deleteProductId)
+  }
+```
+
+# Variables
+
+```json
+{
+  "productInput": {
+    "name": "Noname",
+    "description": "Nodescription",
+    "price": 11,
+    "image": "URL",
+    "categoryId": "2"
+  },
+  "updateProductId": "1",
+  "updateProductProductInput2": {
+    "name": "Harvard",
+    "image": "Titan"
+  },
+  "deleteProductId": "9"
+}
+```
