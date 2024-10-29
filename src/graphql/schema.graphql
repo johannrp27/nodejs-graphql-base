@@ -4,13 +4,33 @@ type Query {
 }
 
 type Product {
+  id: ID!
+  name: String!
+  image: String!
+  description: String!
+  price: Int!
+  createdAt: String!
+  categoryId: ID!
+  category: Category!
+}
+
+type AuthResponse {
+  access_token: String!
+  user: User!
+}
+
+type User {
   id: ID
-  name: String
-  image: String
-  description: String
-  price: Int
+  email: String
+  role: String
   createdAt: String
-  categoryId: Int
+}
+
+type Category {
+  id: ID!
+  name: String!
+  image: String!
+  createdAt: String!
 }
 
 input CreateProductInput {
@@ -30,6 +50,7 @@ input UpdateProductInput {
 }
 
 type Mutation {
+  login(email: String!, password: String!): AuthResponse
   createProduct(productInput: CreateProductInput!): Product
   updateProduct(id: ID!, productInput: UpdateProductInput!): Product
   deleteProduct(id: ID!): ID
